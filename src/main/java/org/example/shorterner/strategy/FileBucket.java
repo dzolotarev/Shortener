@@ -1,5 +1,7 @@
 package org.example.shorterner.strategy;
 
+import org.example.shorterner.ExceptionHandler;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,16 +21,16 @@ public class FileBucket {
 
             Files.deleteIfExists(path);
             Files.createFile(path);
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            ExceptionHandler.log(e);
         }
     }
 
     public long getFileSize() {
         try {
             return Files.size(path);
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            ExceptionHandler.log(e);
         }
         return 0;
     }
@@ -36,8 +38,8 @@ public class FileBucket {
     public void putEntry(Entry entry) {
         try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path))) {
             oos.writeObject(entry);
-        } catch (Exception ignored) {
-
+        } catch (Exception e) {
+            ExceptionHandler.log(e);
         }
     }
 
@@ -45,8 +47,8 @@ public class FileBucket {
         if (getFileSize() > 0) {
             try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(path))) {
                 return (Entry) ois.readObject();
-            } catch (Exception ignored) {
-
+            } catch (Exception e) {
+                ExceptionHandler.log(e);
             }
         }
         return null;
@@ -55,8 +57,8 @@ public class FileBucket {
     public void remove() {
         try {
             Files.delete(path);
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            ExceptionHandler.log(e);
         }
     }
 }
