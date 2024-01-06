@@ -2,12 +2,11 @@ package org.example;
 
 import org.example.shorterner.Shortener;
 import org.example.shorterner.strategy.*;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 /**
@@ -47,7 +46,7 @@ public class FunctionalTest {
         testStorage(shortener);
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void testFileStorageStrategy() {
         StorageStrategy strategy = new FileStorageStrategy();

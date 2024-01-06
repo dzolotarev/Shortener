@@ -3,16 +3,17 @@ package org.example;
 import org.example.shorterner.Shortener;
 import org.example.shorterner.strategy.HashBiMapStorageStrategy;
 import org.example.shorterner.strategy.HashMapStorageStrategy;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 import static org.example.shorterner.Helper.generateRandomString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 /**

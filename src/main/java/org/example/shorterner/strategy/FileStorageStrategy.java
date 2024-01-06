@@ -62,8 +62,7 @@ public class FileStorageStrategy implements StorageStrategy {
 
         transfer(newTable);
 
-        for (int i = 0; i < table.length; i++)
-            table[i].remove();
+        for (FileBucket fileBucket : table) fileBucket.remove();
 
         table = newTable;
     }
